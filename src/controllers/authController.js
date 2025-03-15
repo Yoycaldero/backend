@@ -29,12 +29,11 @@ export const login = async (req, res) => {
       return res.status(400).json({ error: 'Invalid credentials' });
     }
 
-    // Generar JWT
     const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
       expiresIn: '1h',
     });
 
-    // Obtener todos los datos del usuario (excepto la contraseña)
+
     const userData = {
       _id: user._id,
       username: user.username,
